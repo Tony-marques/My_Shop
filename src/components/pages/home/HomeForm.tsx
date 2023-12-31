@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import InputText from "../reusable-ui/InputText";
+import { ChangeEvent, FormEvent, useState } from "react";
+import InputText from "../../reusable-ui/InputText";
 
 export default function HomeForm() {
    const [firstName, setFirstName] = useState<string>("");
@@ -13,7 +13,7 @@ export default function HomeForm() {
       setFirstName(event.target.value);
    };
    return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="POST">
          <InputText
             required
             value={firstName}
