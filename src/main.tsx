@@ -5,10 +5,13 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router/router.tsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AdminContextProvider } from "./context/AdminContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
    <React.StrictMode>
-      <RouterProvider router={router} />
+      <AdminContextProvider>
+         <RouterProvider router={router} />
+      </AdminContextProvider>
       <ToastContainer position="bottom-right" />
    </React.StrictMode>
 );

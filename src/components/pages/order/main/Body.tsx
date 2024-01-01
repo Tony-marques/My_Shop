@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { useState } from "react";
 import { data2 } from "../../../../data/data";
-import Card from "./Card";
 import { formatPrice } from "../../../../utils/around";
+import Card from "./Card";
 
 interface Phone {
    id: number;
@@ -46,4 +46,5 @@ const BodyStyled = styled.div`
    min-height: 100%;
    justify-items: center;
    overflow-y: scroll;
+   position: relative;
 `;
