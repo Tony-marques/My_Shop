@@ -8,7 +8,6 @@ export default function OrderPage() {
       <OrderPageStyled>
          <div className="container">
             <Navbar />
-            {/* <div className="main"></div> */}
             <Main />
          </div>
       </OrderPageStyled>

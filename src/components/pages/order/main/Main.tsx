@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import Body from "./Body";
 
 export default function Main() {
    return (
       <MainStyled>
          <div className="basket">basket</div>
-         <div className="body">body</div>
+         <Body />
       </MainStyled>
    );
 }
@@ -18,9 +19,5 @@ const MainStyled = styled.div`
 
    .basket {
       background-color: red;
-   }
-
-   .body {
-      background-color: blue;
    }
 `;
