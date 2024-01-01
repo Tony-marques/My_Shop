@@ -14,7 +14,7 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-   background-color: ${theme.colors.secondary};
+   background-color: ${theme.colors.white};
    height: 100vh;
    display: flex;
    justify-content: center;
@@ -26,7 +26,7 @@ const OrderPageStyled = styled.div`
       width: 1400px;
       height: 95vh;
       background-color: red;
-      border-radius: ${theme.borderRadius.round};
+      border-radius: ${theme.borderRadius.extraRound};
       overflow: hidden;
 
       .main {
