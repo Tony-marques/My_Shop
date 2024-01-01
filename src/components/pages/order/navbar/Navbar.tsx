@@ -3,17 +3,13 @@ import Logo from "../../../reusable-ui/Logo";
 import { theme } from "../../../../theme";
 import NavbarRight from "./NavbarRight";
 import ToggleButton from "./ToggleButton";
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { useAdminContext } from "../../../../context/AdminContext";
 
 export default function Navbar() {
-   const [isModeAdmin, setIsModeAdmin] = useState<boolean>(false);
+   const { isModeAdmin, toggleAdminMode } = useAdminContext();
+
    const handleChange = () => {
-      setIsModeAdmin(!isModeAdmin);
-      if (!isModeAdmin) {
-         toast.info("Mode admin activé");
-      }
-      console.log("test");
+      toggleAdminMode();
    };
 
    return (
