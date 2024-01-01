@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { ReactElement, createContext, useContext } from "react";
 import { useAdmin } from "../hooks/useAdmin";
 
 const AdminContext = createContext<AdminContextInterface | null>(null);
@@ -12,7 +12,11 @@ interface AdminContextInterface {
    handleSelectedTab: (tabSelected: string) => void;
 }
 
-export const AdminContextProvider = ({ children }) => {
+interface Props {
+   children: ReactElement;
+}
+
+export const AdminContextProvider = ({ children }: Props) => {
    const {
       isModeAdmin,
       toggleAdminMode,
