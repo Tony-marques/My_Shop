@@ -8,9 +8,9 @@ interface Props {
 export default function Logo({ $variant }: Props) {
    return (
       <LogoStyled $variant={$variant}>
-         <h1>My</h1>
+         <h1>My ph</h1>
          <img src="assets/logo2.png" alt="logo" />
-         <h1>Phone</h1>
+         <h1>ne</h1>
       </LogoStyled>
    );
 }
