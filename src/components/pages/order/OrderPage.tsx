@@ -26,14 +26,9 @@ const OrderPageStyled = styled.div`
       flex-direction: column;
       width: 1400px;
       height: 95vh;
-      /* background-color: red; */
+      background-color: red;
       border-radius: ${theme.borderRadius.extraRound};
+      border: 1px solid ${theme.colors.secondary};
       overflow: hidden;
-
-      .main {
-         background-color: blue;
-         flex: 1;
-         /* height: 100px; */
-      }
    }
 `;

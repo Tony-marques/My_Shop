@@ -12,10 +12,11 @@ export default function Main() {
 
 const MainStyled = styled.div`
    flex: 1;
-   height: 100%;
    background-color: yellow;
    display: grid;
    grid-template-columns: 25% 1fr;
+   overflow-y: hidden;
+
 
    .basket {
       background-color: red;

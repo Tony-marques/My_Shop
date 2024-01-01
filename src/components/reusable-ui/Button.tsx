@@ -1,25 +1,30 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
-import {  ReactElement } from "react";
+import { ReactElement } from "react";
 
 interface Props {
    Icon?: ReactElement;
    label?: string;
    onClick?: () => void;
+   $variant?: string;
 }
 
-export default function Button({ label, Icon, onClick }: Props) {
+export default function Button({
+   label,
+   Icon,
+   onClick,
+   $variant = "normal",
+}: Props) {
    return (
-      <ButtonStyled onClick={onClick}>
+      <ButtonStyled onClick={onClick} $variant={$variant}>
          <span>{label}</span>
          {Icon && Icon}
       </ButtonStyled>
    );
 }
 
-const ButtonStyled = styled.button`
+const ButtonStyled = styled.button<Props>`
    width: 100%;
-   padding: 18px 24px 18px 24px;
    border-radius: 5px;
    border: 1px solid ${theme.colors.primary};
    cursor: pointer;
@@ -37,4 +42,20 @@ const ButtonStyled = styled.button`
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
    }
+
+   ${({ $variant }) => ($variant ? sizeStyle[$variant] : "")}
 `;
+
+const small = css`
+   padding: 12px 26px;
+   font-size: 11px;
+   width: max-content;
+`;
+const normal = css`
+   padding: 18px 24px 18px 24px;
+`;
+
+const sizeStyle: { [key: string]: ReturnType<typeof css> } = {
+   small,
+   normal,
+};
