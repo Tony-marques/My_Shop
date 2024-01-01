@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Button from "../../../reusable-ui/Button";
 import { theme } from "../../../../theme";
-import { formatPrice } from "../../../../utils/around";
 
 interface Props {
    id: number;
@@ -11,8 +10,6 @@ interface Props {
 }
 
 export default function Card({ id, imageSource, title, price }: Props) {
-   console.log(formatPrice(price));
-
    return (
       <CardStyled key={id}>
          <div className="image">
