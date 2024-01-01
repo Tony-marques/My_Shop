@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import { useState } from "react";
-import { data1, data2 } from "../../../../data/data";
-import Button from "../../../reusable-ui/Button";
+import { data2 } from "../../../../data/data";
 import Card from "./Card";
 import { formatPrice } from "../../../../utils/around";
 
