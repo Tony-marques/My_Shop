@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Button from "../../reusable-ui/Button";
 
 export default function OrderPage() {
    const { firstName } = useParams();
@@ -6,9 +7,7 @@ export default function OrderPage() {
    return (
       <div>
          <div>Bonjour {firstName}</div>
-         <Link to="/">
-            <button>Déconnexion</button>
-         </Link>
+         <Button path="/" label="Déconnexion" />
       </div>
    );
 }
