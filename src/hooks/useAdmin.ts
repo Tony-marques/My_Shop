@@ -2,7 +2,9 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 export const useAdmin = () => {
-   const [isModeAdmin, setIsModeAdmin] = useState<boolean>(false);
+   const [isModeAdmin, setIsModeAdmin] = useState<boolean>(true);
+   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+   const [selectedTab, setSelectedTab] = useState<string>("add");
 
    const toggleAdminMode = () => {
       setIsModeAdmin(!isModeAdmin);
@@ -11,8 +13,21 @@ export const useAdmin = () => {
       }
    };
 
+   const toggleAdminPanel = () => {
+      setIsCollapsed(!isCollapsed);
+   };
+
+   const handleSelectedTab = (tabSelected: string) => {
+      setSelectedTab(tabSelected);
+      setIsCollapsed(true);
+   };
+
    return {
       isModeAdmin,
       toggleAdminMode,
+      isCollapsed,
+      toggleAdminPanel,
+      selectedTab,
+      handleSelectedTab,
    };
 };

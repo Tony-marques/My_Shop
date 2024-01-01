@@ -6,14 +6,29 @@ const AdminContext = createContext<AdminContextInterface | null>(null);
 interface AdminContextInterface {
    isModeAdmin: boolean;
    toggleAdminMode: () => void;
+   isCollapsed: boolean;
+   toggleAdminPanel: () => void;
+   selectedTab: string;
+   handleSelectedTab: (tabSelected: string) => void;
 }
 
 export const AdminContextProvider = ({ children }) => {
-   const { isModeAdmin, toggleAdminMode } = useAdmin();
+   const {
+      isModeAdmin,
+      toggleAdminMode,
+      isCollapsed,
+      toggleAdminPanel,
+      selectedTab,
+      handleSelectedTab,
+   } = useAdmin();
 
    const value: AdminContextInterface = {
       isModeAdmin,
       toggleAdminMode,
+      isCollapsed,
+      toggleAdminPanel,
+      selectedTab,
+      handleSelectedTab,
    };
 
    return (
