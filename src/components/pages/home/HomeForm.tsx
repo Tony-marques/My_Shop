@@ -27,7 +27,7 @@ export default function HomeForm() {
    return (
       <HomeFormStyled onSubmit={handleSubmit} method="POST">
          <h1>Bienvenue chez nous !</h1>
-         <Separator />
+         <Separator $color={"white"}/>
          <p>Connectez-vous</p>
          <InputText
             required

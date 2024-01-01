@@ -15,7 +15,7 @@ export default function Logo({ $variant }: Props) {
    );
 }
 
-const LogoStyled = styled.div`
+const LogoStyled = styled.div<Props>`
    display: flex;
    align-items: center;
 
@@ -40,7 +40,7 @@ const LogoStyled = styled.div`
       margin: 0 5px;
    }
 
-   ${({ $variant }) => LogoStyle[$variant]}
+   ${({ $variant }) => ($variant ? LogoStyle[$variant] : "")}
 `;
 
 const small = css``;
@@ -48,7 +48,7 @@ const normal = css`
    transform: scale(2.5);
 `;
 
-const LogoStyle = {
+const LogoStyle: { [key: string]: ReturnType<typeof css> } = {
    small,
    normal,
 };

@@ -4,8 +4,8 @@ import {  ReactElement } from "react";
 
 interface Props {
    Icon?: ReactElement;
-   label: string;
-   onClick: () => void;
+   label?: string;
+   onClick?: () => void;
 }
 
 export default function Button({ label, Icon, onClick }: Props) {

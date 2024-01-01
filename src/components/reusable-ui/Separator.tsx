@@ -9,17 +9,17 @@ export default function Separator({ $color = "white" }: Props) {
    return <SeparatorStyled $color={$color} />;
 }
 
-const SeparatorStyled = styled.div`
+const SeparatorStyled = styled.div<Props>`
    width: 100%;
    margin-bottom: 40px;
 
-   ${({ $color }) => separatorColor[$color]}
+   ${({ $color }) => ($color ? separatorColor[$color] : "")}
 `;
 
 const white = css`
    border: 2px solid ${theme.colors.white};
 `;
 
-const separatorColor = {
+const separatorColor: { [key: string]: ReturnType<typeof css> } = {
    white,
 };
