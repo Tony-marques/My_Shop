@@ -1,9 +1,9 @@
 export interface Phone {
-  id: number;
-  imageSource: string;
-  title: string;
-  price: number;
-  quantity: number;
-  isAvailable: boolean;
-  isAdvertised: boolean;
+   id?: number | string;
+   imageSource: string;
+   title: string;
+   price: number | string;
+   quantity?: number;
+   isAvailable?: boolean;
+   isAdvertised?: boolean;
 }

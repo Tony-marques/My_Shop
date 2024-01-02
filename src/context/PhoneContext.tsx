@@ -6,6 +6,8 @@ const PhoneContext = createContext<PhoneContextInterface | null>(null);
 
 interface PhoneContextInterface {
    phones: Phone[];
+   handleAddPhone: (phoneToAdd: Phone) => void;
+   handleDeletePhone: (idToPhoneDelete: string | number) => void;
 }
 
 interface Props {
@@ -13,9 +15,13 @@ interface Props {
 }
 
 export const PhoneContextProvider = ({ children }: Props) => {
-   const { phones } = usePhone();
+   const { phones, handleAddPhone, handleDeletePhone } = usePhone();
 
-   const value: PhoneContextInterface = { phones };
+   const value: PhoneContextInterface = {
+      phones,
+      handleAddPhone,
+      handleDeletePhone,
+   };
 
    return (
       <PhoneContext.Provider value={value}>{children}</PhoneContext.Provider>

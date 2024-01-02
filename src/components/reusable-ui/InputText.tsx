@@ -5,7 +5,7 @@ import { theme } from "../../theme";
 interface Props {
    onChange: (Event: ChangeEvent<HTMLInputElement>) => void;
    required: boolean;
-   value: string;
+   value: string | number;
    name: string;
    placeholder: string;
    Icon?: ReactElement;

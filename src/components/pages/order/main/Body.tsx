@@ -15,7 +15,7 @@ export default function Body() {
                   <Card
                      key={id}
                      id={id}
-                     imageSource={imageSource}
+                     imageSource={imageSource ? imageSource : "/assets/coming-soon.png"}
                      title={title}
                      price={formatPrice(price)}
                   />
