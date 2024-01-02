@@ -62,12 +62,12 @@ const ToggleButtonStyled = styled.div`
          left: 5px;
       }
       &:checked + label:before {
-         background-color: ${theme.colors.secondary};
+         background-color: ${theme.colors.primary};
          left: 165px;
       }
       & + label:after {
          position: absolute;
-         opacity: 1;
+         /* opacity: 1; */
          transition: all 0.3s ease;
       }
       &:not(:checked) + label:after {
@@ -81,7 +81,8 @@ const ToggleButtonStyled = styled.div`
    }
 
    input:checked + label {
-      background-color: ${theme.colors.greySemiDark};
-      color: ${theme.colors.white};
+      background-color: red;
+      background-color: ${theme.colors.background_white};
+      /* color: ${theme.colors.white}; */
    }
 `;

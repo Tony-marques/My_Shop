@@ -1,6 +1,6 @@
 import { useAdminContext } from "../../../../../context/AdminContext";
 import Tabs from "./Tabs";
-import Panels from "./Panels";
+import Panels from "./Panels/Panels";
 
 export default function Admin() {
    const { isCollapsed } = useAdminContext();
