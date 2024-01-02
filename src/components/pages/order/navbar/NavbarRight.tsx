@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 
 export default function NavbarRight() {
+   const { firstName } = useParams();
+
    return (
       <NavbarRightStyled>
          <div className="informations">
             <p>
-               Hey, <span>bob</span>
+               Hey, <span>{firstName}</span>
             </p>
             <Link to="/">Se déconnecter</Link>
          </div>
