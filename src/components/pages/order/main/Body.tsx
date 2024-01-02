@@ -1,22 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import { useState } from "react";
-import { data2 } from "../../../../data/data";
 import { formatPrice } from "../../../../utils/around";
 import Card from "./Card";
-
-interface Phone {
-   id: number;
-   imageSource: string;
-   title: string;
-   price: number;
-   quantity: number;
-   isAvailable: boolean;
-   isAdvertised: boolean;
-}
+import { usePhoneContext } from "../../../../context/PhoneContext";
 
 export default function Body() {
-   const [phones, setPhones] = useState<Phone[]>(data2);
+   const { phones } = usePhoneContext();
 
    return (
       <BodyStyled>
