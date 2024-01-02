@@ -14,6 +14,7 @@ const EMPTY_PHONE = {
    title: "",
    imageSource: "",
    price: "",
+   id: "",
 };
 
 export default function AddPhoneForm() {
@@ -67,7 +68,7 @@ export default function AddPhoneForm() {
 
    return (
       <AddPhoneFormStyled onSubmit={handleSubmit}>
-         <ImagePreview image={inputs.imageSource}/>
+         <ImagePreview image={inputs.imageSource} />
          <div className="form">
             {inputsConfig.map(
                ({ placeholder, Icon, $variant, className, name, value }) => {

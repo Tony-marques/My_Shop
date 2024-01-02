@@ -6,7 +6,7 @@ import { TiDelete } from "react-icons/ti";
 import { usePhoneContext } from "../../../../context/PhoneContext";
 
 interface Props {
-   id: number;
+   id: number | string;
    imageSource: string;
    title: string;
    price: number | string;
@@ -15,8 +15,9 @@ interface Props {
 export default function Card({ id, imageSource, title, price }: Props) {
    const { isModeAdmin } = useAdminContext();
    const { handleDeletePhone } = usePhoneContext();
+
    return (
-      <CardStyled key={id}>
+      <CardStyled>
          {isModeAdmin && (
             <div
                className="button-delete"

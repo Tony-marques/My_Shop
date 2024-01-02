@@ -9,6 +9,8 @@ export default function PhonesContainer() {
       <PhonesContainerStyled>
          {phones &&
             phones.map(({ id, imageSource, title, price }) => {
+               console.log(id);
+
                return (
                   <Card
                      key={id}
@@ -33,5 +35,4 @@ const PhonesContainerStyled = styled.div`
    grid-template-columns: repeat(3, 1fr);
    grid-row-gap: 60px;
    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-
 `;

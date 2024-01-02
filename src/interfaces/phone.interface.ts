@@ -1,5 +1,5 @@
 export interface Phone {
-   id?: number | string;
+   id: number | string;
    imageSource: string;
    title: string;
    price: number | string;

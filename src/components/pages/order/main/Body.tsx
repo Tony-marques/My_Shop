@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import { formatPrice } from "../../../../utils/around";
-import Card from "./Card";
 import { usePhoneContext } from "../../../../context/PhoneContext";
 import { useAdminContext } from "../../../../context/AdminContext";
 import EmptyMessageAdmin from "./Admin/EmptyMessageAdmin";

@@ -3,14 +3,14 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
 interface Props {
-   onChange: (Event: ChangeEvent<HTMLInputElement>) => void;
-   required: boolean;
-   value: string | number;
-   name: string;
-   placeholder: string;
+   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+   required?: boolean;
+   value?: string | number;
+   name?: string;
+   placeholder?: string;
    Icon?: ReactElement;
    className?: string;
-   $variant?: "small" | "normal";
+   $variant?: string;
 }
 
 export default function InputText({
