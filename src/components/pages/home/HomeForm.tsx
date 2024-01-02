@@ -36,6 +36,7 @@ export default function HomeForm() {
             placeholder={"Entrez votre prénom"}
             Icon={<PiUserCircleFill />}
             onChange={handleChange}
+            $variant="normal"
          />
          <Button
             onClick={handleRedirect}

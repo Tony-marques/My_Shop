@@ -24,7 +24,7 @@ const TabStyled = styled.div`
    padding: 0 22px;
    gap: 13px;
    font-weight: 400;
-   font-size: 16px;
+   font-size: 12px;
    color: ${theme.colors.greySemiDark};
    background-color: ${theme.colors.white};
    cursor: pointer;

@@ -57,7 +57,8 @@ const TabsStyled = styled.div`
    margin-left: 70px;
 
    .active {
-      background-color: ${theme.colors.background_dark};
+      background-color: ${theme.colors.primary};
+      /* background-color: ${theme.colors.background_dark}; */
       color: ${theme.colors.white};
       border-bottom: 1px solid ${theme.colors.background_dark};
    }
