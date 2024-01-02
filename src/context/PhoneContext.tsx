@@ -8,6 +8,7 @@ interface PhoneContextInterface {
    phones: Phone[];
    handleAddPhone: (phoneToAdd: Phone) => void;
    handleDeletePhone: (idToPhoneDelete: string | number) => void;
+   regeneratePhones: () => void;
 }
 
 interface Props {
@@ -15,12 +16,14 @@ interface Props {
 }
 
 export const PhoneContextProvider = ({ children }: Props) => {
-   const { phones, handleAddPhone, handleDeletePhone } = usePhone();
+   const { phones, handleAddPhone, handleDeletePhone, regeneratePhones } =
+      usePhone();
 
    const value: PhoneContextInterface = {
       phones,
       handleAddPhone,
       handleDeletePhone,
+      regeneratePhones,
    };
 
    return (

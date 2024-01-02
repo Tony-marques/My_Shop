@@ -22,9 +22,14 @@ export const usePhone = () => {
       setPhones(filteredPhones);
    };
 
+   const regeneratePhones = () => {
+      setPhones(data2);
+   };
+
    return {
       phones,
       handleAddPhone,
       handleDeletePhone,
+      regeneratePhones,
    };
 };
