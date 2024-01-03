@@ -7,17 +7,15 @@ import { useAdminContext } from "../../../../context/AdminContext";
 export default function PhonesContainer() {
    const { handleSelectedTab, isModeAdmin } = useAdminContext();
    const { phones, handlePhoneSelected, phoneSelected } = usePhoneContext();
-   // const [phoneSelected, setPhoneSelected] = useState<Phone | undefined>(
-   //    EMPTY_PHONE
-   // );
 
    const handleClick = (id: number | string) => {
       if (!isModeAdmin) return;
       const selectedPhone = phones.find((phone) => phone.id === id);
-      // setPhoneSelected(selectedPhone);
-      handlePhoneSelected(selectedPhone);
 
-      handleSelectedTab("edit");
+      if (selectedPhone) {
+         handlePhoneSelected(selectedPhone);
+         handleSelectedTab("edit");
+      }
    };
 
    return (
@@ -34,6 +32,7 @@ export default function PhonesContainer() {
                      title={title}
                      price={formatPrice(price)}
                      onClick={() => handleClick(id)}
+                     $isHoverable={isModeAdmin}
                      $isSelected={isModeAdmin && phoneSelected?.id === id}
                   />
                );
