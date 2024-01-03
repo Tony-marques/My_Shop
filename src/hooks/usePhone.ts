@@ -34,6 +34,7 @@ export const usePhone = () => {
          (phone) => phone.id !== idToPhoneDelete
       );
       setPhones(filteredPhones);
+      setIsSelectedPhone(false);
    };
 
    const handleEditPhone = (newPhone: Phone) => {
