@@ -4,6 +4,7 @@ import { theme } from "../../../../theme";
 import { useAdminContext } from "../../../../context/AdminContext";
 import { TiDelete } from "react-icons/ti";
 import { usePhoneContext } from "../../../../context/PhoneContext";
+import { MouseEvent } from "react";
 
 interface Props {
    id: number | string;
@@ -12,10 +13,12 @@ interface Props {
    price: number | string;
    onClick: () => void;
    $isSelected: boolean;
+   $isHoverable: boolean;
 }
 
 interface StyleProps {
    $isSelected: boolean;
+   $isHoverable: boolean;
 }
 
 export default function Card({
@@ -25,16 +28,29 @@ export default function Card({
    price,
    onClick,
    $isSelected,
+   $isHoverable,
 }: Props) {
    const { isModeAdmin } = useAdminContext();
    const { handleDeletePhone } = usePhoneContext();
 
+   const onDelete = (
+      event: MouseEvent<HTMLDivElement>,
+      id: number | string
+   ) => {
+      event.stopPropagation();
+      handleDeletePhone(id);
+   };
+
    return (
-      <CardStyled $isSelected={$isSelected} onClick={onClick}>
+      <CardStyled
+         $isSelected={$isSelected}
+         $isHoverable={$isHoverable}
+         onClick={onClick}
+      >
          {isModeAdmin && (
             <div
                className="button-delete"
-               onClick={() => handleDeletePhone(id)}
+               onClick={(event) => onDelete(event, id)}
             >
                <TiDelete />
             </div>
@@ -46,7 +62,11 @@ export default function Card({
             <div className="title">{title}</div>
             <div className="bottom-informations">
                <div className="price">{price}</div>
-               <Button label="Ajouter" $variant="small" />
+               <Button
+                  label="Ajouter"
+                  $variant="small"
+                  className="card-selected"
+               />
             </div>
          </div>
       </CardStyled>
@@ -120,8 +140,45 @@ const CardStyled = styled.div<StyleProps>`
    }
 
    ${({ $isSelected }) => ($isSelected ? selectedStyle : "")}
+   ${({ $isHoverable }) => ($isHoverable ? HoverableStyle : "")}
+`;
+
+const HoverableStyle = css`
+   &:hover {
+      transform: scale(1.05);
+      transition: ease-out 0.4s;
+      cursor: pointer;
+   }
 `;
 
 const selectedStyle = css`
-   background-color: green;
+   background-color: ${theme.colors.primary};
+
+   .informations {
+      .title {
+         color: ${theme.colors.white};
+      }
+
+      .bottom-informations {
+         .price {
+            color: ${theme.colors.white};
+         }
+      }
+   }
+
+   .button-delete {
+      color: ${theme.colors.white};
+   }
+
+   .card-selected {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      border-color: ${theme.colors.white};
+
+      &:hover {
+         background-color: ${theme.colors.primary};
+         color: ${theme.colors.white};
+         border-color: ${theme.colors.white};
+      }
+   }
 `;
