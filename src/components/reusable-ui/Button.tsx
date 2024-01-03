@@ -7,6 +7,7 @@ interface Props {
    label?: string;
    onClick?: () => void;
    $variant?: string;
+   className?: string;
 }
 
 export default function Button({
@@ -14,9 +15,10 @@ export default function Button({
    Icon,
    onClick,
    $variant = "normal",
+   className,
 }: Props) {
    return (
-      <ButtonStyled onClick={onClick} $variant={$variant}>
+      <ButtonStyled onClick={onClick} $variant={$variant} className={className}>
          <span>{label}</span>
          {Icon && Icon}
       </ButtonStyled>
@@ -36,7 +38,7 @@ const ButtonStyled = styled.button<Props>`
    justify-content: center;
    font-family: Arial;
    font-weight: 700;
-   transition: all 0.3s;
+   transition: ease-out 0.4s;
 
    &:hover {
       background-color: ${theme.colors.white};

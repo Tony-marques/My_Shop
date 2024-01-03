@@ -7,8 +7,13 @@ const PhoneContext = createContext<PhoneContextInterface | null>(null);
 interface PhoneContextInterface {
    phones: Phone[];
    handleAddPhone: (phoneToAdd: Phone) => void;
-   handleDeletePhone: (idToPhoneDelete: string | number) => void;
+   handleDeletePhone: (idToPhoneDelete?: string | number) => void;
    regeneratePhones: () => void;
+   handlePhoneSelected: (selectPhone: Phone) => void;
+   phoneSelected: Phone;
+   isSelectedPhone: boolean;
+   setPhoneSelected: (phoneSelected: Phone) => void;
+   handleEditPhone: (newPhone: Phone) => void;
 }
 
 interface Props {
@@ -16,14 +21,28 @@ interface Props {
 }
 
 export const PhoneContextProvider = ({ children }: Props) => {
-   const { phones, handleAddPhone, handleDeletePhone, regeneratePhones } =
-      usePhone();
+   const {
+      phones,
+      handleAddPhone,
+      handleDeletePhone,
+      regeneratePhones,
+      handlePhoneSelected,
+      phoneSelected,
+      isSelectedPhone,
+      setPhoneSelected,
+      handleEditPhone,
+   } = usePhone();
 
    const value: PhoneContextInterface = {
       phones,
       handleAddPhone,
       handleDeletePhone,
       regeneratePhones,
+      handlePhoneSelected,
+      phoneSelected,
+      isSelectedPhone,
+      setPhoneSelected,
+      handleEditPhone,
    };
 
    return (

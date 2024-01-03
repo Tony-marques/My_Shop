@@ -2,15 +2,26 @@ import styled from "styled-components";
 import { usePhoneContext } from "../../../../context/PhoneContext";
 import Card from "./Card";
 import { formatPrice } from "../../../../utils/around";
+import { useAdminContext } from "../../../../context/AdminContext";
 
 export default function PhonesContainer() {
-   const { phones } = usePhoneContext();
+   const { handleSelectedTab, isModeAdmin } = useAdminContext();
+   const { phones, handlePhoneSelected, phoneSelected } = usePhoneContext();
+
+   const handleClick = (id: number | string) => {
+      if (!isModeAdmin) return;
+      const selectedPhone = phones.find((phone) => phone.id === id);
+
+      if (selectedPhone) {
+         handlePhoneSelected(selectedPhone);
+         handleSelectedTab("edit");
+      }
+   };
+
    return (
       <PhonesContainerStyled>
          {phones &&
             phones.map(({ id, imageSource, title, price }) => {
-               console.log(id);
-
                return (
                   <Card
                      key={id}
@@ -20,6 +31,9 @@ export default function PhonesContainer() {
                      }
                      title={title}
                      price={formatPrice(price)}
+                     onClick={() => handleClick(id)}
+                     $isHoverable={isModeAdmin}
+                     $isSelected={isModeAdmin && phoneSelected?.id === id}
                   />
                );
             })}
@@ -35,4 +49,8 @@ const PhonesContainerStyled = styled.div`
    grid-template-columns: repeat(3, 1fr);
    grid-row-gap: 60px;
    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+
+   .test {
+      background-color: red;
+   }
 `;
