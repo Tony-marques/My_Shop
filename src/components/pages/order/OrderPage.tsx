@@ -30,5 +30,6 @@ const OrderPageStyled = styled.div`
       border-radius: ${theme.borderRadius.extraRound};
       /* border: 1px solid ${theme.colors.primary}; */
       overflow: hidden;
+      border: 3px solid ${theme.colors.primary};
    }
 `;
