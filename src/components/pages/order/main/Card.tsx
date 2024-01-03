@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from "../../../reusable-ui/Button";
 import { theme } from "../../../../theme";
 import { useAdminContext } from "../../../../context/AdminContext";
@@ -10,14 +10,27 @@ interface Props {
    imageSource: string;
    title: string;
    price: number | string;
+   onClick: () => void;
+   $isSelected: boolean;
 }
 
-export default function Card({ id, imageSource, title, price }: Props) {
+interface StyleProps {
+   $isSelected: boolean;
+}
+
+export default function Card({
+   id,
+   imageSource,
+   title,
+   price,
+   onClick,
+   $isSelected,
+}: Props) {
    const { isModeAdmin } = useAdminContext();
    const { handleDeletePhone } = usePhoneContext();
 
    return (
-      <CardStyled>
+      <CardStyled $isSelected={$isSelected} onClick={onClick}>
          {isModeAdmin && (
             <div
                className="button-delete"
@@ -40,7 +53,7 @@ export default function Card({ id, imageSource, title, price }: Props) {
    );
 }
 
-const CardStyled = styled.div`
+const CardStyled = styled.div<StyleProps>`
    background-color: ${theme.colors.white};
    padding: 10px 20px;
    width: 240px;
@@ -105,4 +118,10 @@ const CardStyled = styled.div`
       color: ${theme.colors.primary};
       cursor: pointer;
    }
+
+   ${({ $isSelected }) => ($isSelected ? selectedStyle : "")}
+`;
+
+const selectedStyle = css`
+   background-color: green;
 `;

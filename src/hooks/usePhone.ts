@@ -15,7 +15,7 @@ export const usePhone = () => {
       ]);
    };
 
-   const handleDeletePhone = (idToPhoneDelete: string | number) => {
+   const handleDeletePhone = (idToPhoneDelete?: string | number) => {
       const filteredPhones = phones.filter(
          (phone) => phone.id !== idToPhoneDelete
       );

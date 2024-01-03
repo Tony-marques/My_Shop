@@ -7,7 +7,7 @@ const PhoneContext = createContext<PhoneContextInterface | null>(null);
 interface PhoneContextInterface {
    phones: Phone[];
    handleAddPhone: (phoneToAdd: Phone) => void;
-   handleDeletePhone: (idToPhoneDelete: string | number) => void;
+   handleDeletePhone: (idToPhoneDelete?: string | number) => void;
    regeneratePhones: () => void;
 }
 

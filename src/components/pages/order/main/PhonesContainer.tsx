@@ -2,15 +2,34 @@ import styled from "styled-components";
 import { usePhoneContext } from "../../../../context/PhoneContext";
 import Card from "./Card";
 import { formatPrice } from "../../../../utils/around";
+import { useState } from "react";
+import { Phone } from "../../../../interfaces/phone.interface";
+
+const EMPTY_PHONE = {
+   title: "",
+   imageSource: "",
+   price: "",
+   id: "",
+   quantity: 0,
+   isAvailable: true,
+   isAdvertised: true,
+};
 
 export default function PhonesContainer() {
    const { phones } = usePhoneContext();
+   const [phoneSelected, setPhoneSelected] = useState<Phone | undefined>(
+      EMPTY_PHONE
+   );
+
+   const handleClick = (id: number | string) => {
+      const selectedPhone = phones.find((phone) => phone.id === id);
+      setPhoneSelected(selectedPhone);
+   };
+
    return (
       <PhonesContainerStyled>
          {phones &&
             phones.map(({ id, imageSource, title, price }) => {
-               console.log(id);
-
                return (
                   <Card
                      key={id}
@@ -20,6 +39,8 @@ export default function PhonesContainer() {
                      }
                      title={title}
                      price={formatPrice(price)}
+                     onClick={() => handleClick(id)}
+                     $isSelected={phoneSelected?.id === id}
                   />
                );
             })}
@@ -35,4 +56,8 @@ const PhonesContainerStyled = styled.div`
    grid-template-columns: repeat(3, 1fr);
    grid-row-gap: 60px;
    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+
+   .test {
+      background-color: red;
+   }
 `;
