@@ -4,6 +4,7 @@ import Card from "./Card";
 import { formatPrice } from "../../../../utils/around";
 import { useState } from "react";
 import { Phone } from "../../../../interfaces/phone.interface";
+import { useAdminContext } from "../../../../context/AdminContext";
 
 const EMPTY_PHONE = {
    title: "",
@@ -16,6 +17,7 @@ const EMPTY_PHONE = {
 };
 
 export default function PhonesContainer() {
+   const { handleSelectedTab } = useAdminContext();
    const { phones } = usePhoneContext();
    const [phoneSelected, setPhoneSelected] = useState<Phone | undefined>(
       EMPTY_PHONE
@@ -24,6 +26,8 @@ export default function PhonesContainer() {
    const handleClick = (id: number | string) => {
       const selectedPhone = phones.find((phone) => phone.id === id);
       setPhoneSelected(selectedPhone);
+
+      handleSelectedTab("edit");
    };
 
    return (
