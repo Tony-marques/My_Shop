@@ -22,7 +22,7 @@ export const data1 = [
 export const data2 = [
    {
       id: 1,
-      imageSource: "/assets/iphone12.jpg",
+      imageSource: "/assets/iphone12.png",
       title: "Iphone 12",
       price: 599.507,
       quantity: 0,
@@ -49,7 +49,7 @@ export const data2 = [
    },
    {
       id: 4,
-      imageSource: "/assets/iphone13.webp",
+      imageSource: "/assets/iphone13.png",
       title: "Iphone 13",
       price: 675.0,
       quantity: 0,

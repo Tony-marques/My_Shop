@@ -14,7 +14,6 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-   background-color: pink;
    display: flex;
    flex-direction: column;
 `;
