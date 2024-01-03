@@ -2,13 +2,14 @@ import styled from "styled-components";
 import Body from "./Body";
 import Admin from "./Admin/Admin";
 import { useAdminContext } from "../../../../context/AdminContext";
+import Basket from "./Basket/Basket";
 
 export default function Main() {
    const { isModeAdmin } = useAdminContext();
 
    return (
       <MainStyled>
-         <div className="basket">basket</div>
+         <Basket/>
          <div className="body-and-admin">
             <Body />
             {isModeAdmin && <Admin />}
@@ -23,10 +24,6 @@ const MainStyled = styled.div`
    grid-template-columns: 25% 1fr;
    overflow-y: hidden;
    position: relative;
-
-   .basket {
-      background-color: red;
-   }
 
    .body-and-admin {
 
