@@ -2,30 +2,20 @@ import styled from "styled-components";
 import { usePhoneContext } from "../../../../context/PhoneContext";
 import Card from "./Card";
 import { formatPrice } from "../../../../utils/around";
-import { useState } from "react";
-import { Phone } from "../../../../interfaces/phone.interface";
 import { useAdminContext } from "../../../../context/AdminContext";
 
-const EMPTY_PHONE = {
-   title: "",
-   imageSource: "",
-   price: "",
-   id: "",
-   quantity: 0,
-   isAvailable: true,
-   isAdvertised: true,
-};
-
 export default function PhonesContainer() {
-   const { handleSelectedTab } = useAdminContext();
-   const { phones } = usePhoneContext();
-   const [phoneSelected, setPhoneSelected] = useState<Phone | undefined>(
-      EMPTY_PHONE
-   );
+   const { handleSelectedTab, isModeAdmin } = useAdminContext();
+   const { phones, handlePhoneSelected, phoneSelected } = usePhoneContext();
+   // const [phoneSelected, setPhoneSelected] = useState<Phone | undefined>(
+   //    EMPTY_PHONE
+   // );
 
    const handleClick = (id: number | string) => {
+      if (!isModeAdmin) return;
       const selectedPhone = phones.find((phone) => phone.id === id);
-      setPhoneSelected(selectedPhone);
+      // setPhoneSelected(selectedPhone);
+      handlePhoneSelected(selectedPhone);
 
       handleSelectedTab("edit");
    };
@@ -44,7 +34,7 @@ export default function PhonesContainer() {
                      title={title}
                      price={formatPrice(price)}
                      onClick={() => handleClick(id)}
-                     $isSelected={phoneSelected?.id === id}
+                     $isSelected={isModeAdmin && phoneSelected?.id === id}
                   />
                );
             })}
